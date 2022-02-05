@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
                 'id',
                 'title',
                 'content',
-                'created_at'
+                'created_at',
+                'updated_at'
             ],
             // display all posts in descending order by date created
             order: [
@@ -44,6 +45,7 @@ router.get('/', (req, res) => {
         });
 });
 
+// create a new post
 router.post('/', (req, res) => {
     // expects {"title": "Check out this cool gear", "content":"I think it's worth adding to my collection", "user_id": 1}
     Post.create({
@@ -52,6 +54,26 @@ router.post('/', (req, res) => {
             user_id: req.body.user_id
         })
         .then(dbPostData => res.json(dbPostData))
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
+// update an existing post title and/or content
+router.put('/:id', (req, res) => {
+    Post.update(req.body, {
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(dbPostData => {
+            if (!dbPostData) {
+                res.status(404).json({ message: 'No post found with this id' });
+                return;
+            }
+            res.json(dbPostData);
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
