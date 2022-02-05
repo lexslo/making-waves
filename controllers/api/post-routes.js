@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 
 // get all posts
 router.get('/', (req, res) => {
@@ -10,19 +10,22 @@ router.get('/', (req, res) => {
                 'content',
                 'created_at'
             ],
-            // include: [{
-            //         model: Comment,
-            //         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-            //         include: {
-            //             model: User,
-            //             attributes: 'username'
-            //         }
-            //     },
-            //     {
-            //         model: User,
-            //         attributes: 'username'
-            //     }
-            // ]
+            order: [
+                ['created_at', 'DESC']
+            ],
+            include: [{
+                    model: Comment,
+                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+                },
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]
         })
         // .then(dbPostData => {
         //     const posts = dbPostData.map(post => post.get({ plain: true }));
