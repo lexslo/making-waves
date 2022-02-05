@@ -9,26 +9,25 @@ router.get('/', (req, res) => {
                 'content',
                 'created_at'
             ],
-            // include: [{
-            //         model: Comment,
-            //         attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-            //         include: {
-            //             model: User,
-            //             attributes: 'username'
-            //         }
-            //     },
-            //     {
-            //         model: User,
-            //         attributes: 'username'
-            //     }
-            // ]
+            include: [{
+                    model: Comment,
+                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+                },
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]
         })
-        // .then(dbPostData => {
-        //     const posts = dbPostData.map(post => post.get({ plain: true }));
+        .then(dbPostData => {
+            const posts = dbPostData.map(post => post.get({ plain: true }));
 
-    //     res.render('homepage', posts);
-    // })
-    .then(dbPostData => dbPostData)
+            res.render('homepage', posts);
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
