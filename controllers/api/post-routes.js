@@ -10,9 +10,11 @@ router.get('/', (req, res) => {
                 'content',
                 'created_at'
             ],
+            // display all posts in descending order by date created
             order: [
                 ['created_at', 'DESC']
             ],
+            // show comments for each post and the users who wrote the comments
             include: [{
                     model: Comment,
                     attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
@@ -21,6 +23,7 @@ router.get('/', (req, res) => {
                         attributes: ['username']
                     }
                 },
+                // include the user who made the post
                 {
                     model: User,
                     attributes: ['username']
