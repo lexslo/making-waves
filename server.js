@@ -11,7 +11,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // session declaration, include cookies
 const sess = {
-    secret: 'Super secret secret',
+    secret: 'Circle of 5ths is 14736251',
     cookie: {},
     resave: false,
     saveUninitialized: true,
