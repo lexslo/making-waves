@@ -1,0 +1,13 @@
+<ol>
+  {{#each posts as |post|}}
+  <li>
+    <article>
+        <h4>{{post.title}}</h4>
+        <p>{{post.content}}</p>
+      <div>
+        Posted by {{post.user.username}} on {{post.created_at}} | <a href="/posts/{{post.id}}">{{post.comments.length}} comment(s)</a>
+      </div>
+    </article>
+  </li>
+  {{/each}}
+</ol>
