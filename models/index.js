@@ -7,19 +7,22 @@ User.hasMany(Post, {
     foreignKey: 'user_id'
 });
 
-// a post can belong to one user, but not many users
+// a post can belong to one user, not many users
 Post.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
 });
 
 // a comment belongs to one user, not many users
 Comment.belongsTo(User, {
-    foreignKey: 'user_id'
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
 });
 
 // one comment belongs to one post
 Comment.belongsTo(Post, {
-    foreignKey: 'post_id'
+    foreignKey: 'post_id',
+    onDelete: 'CASCADE'
 });
 
 // one user may have many comments
