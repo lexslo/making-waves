@@ -94,4 +94,48 @@ router.get('/post/:id', (req, res) => {
         });
 });
 
+router.get('/dashboard', (req, res) => {
+    Post.findAll({
+            where: {
+                // grab user id from the session data and search in Post by that user_id
+                user_id: req.session.user_id
+            },
+            attributes: [
+                'id',
+                'title',
+                'content',
+                'created_at',
+                'updated_at'
+            ],
+            // display all posts in descending order by date created
+            order: [
+                ['created_at', 'DESC']
+            ],
+            include: [{
+                    model: User
+                },
+                {
+                    model: Comment,
+                    attributes: ['id', 'comment_text', 'created_at', 'updated_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+                }
+            ]
+        })
+        .then(dbPostData => {
+            const posts = dbPostData.map(post => post.get({ plain: true }));
+
+            res.render('dashboard', {
+                posts,
+                loggedIn: req.session.loggedIn
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
+
 module.exports = router;

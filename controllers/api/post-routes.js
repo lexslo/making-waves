@@ -86,16 +86,19 @@ router.get('/:id', (req, res) => {
 // create a new post
 router.post('/', (req, res) => {
     // expects {"title": "Check out this cool gear", "content":"I think it's worth adding to my collection", "user_id": 1}
-    Post.create({
-            title: req.body.title,
-            content: req.body.content,
-            user_id: req.body.user_id
-        })
-        .then(dbPostData => res.json(dbPostData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    if (req.session) {
+        Post.create({
+                title: req.body.title,
+                content: req.body.content,
+                // grab user id from logged in session
+                user_id: req.session.user_id
+            })
+            .then(dbPostData => res.json(dbPostData))
+            .catch(err => {
+                console.log(err);
+                res.status(500).json(err);
+            });
+    }
 });
 
 // update an existing post title and/or content

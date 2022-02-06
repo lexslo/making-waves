@@ -1,0 +1,56 @@
+{{#if posts}}
+  <ol>
+    {{#each posts as |post|}}
+      <li>
+        <article>
+          <h4>{{post.title}}</h4>
+          <p>{{post.content}}</p>
+          <div>
+            Posted by
+            {{post.user.username}}
+            on
+            {{post.created_at}}
+            |
+            <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
+          </div>
+
+          <div class="comments">
+            {{#each post.comments}}
+              <section class="comment">
+                <div class="meta">
+                  {{user.username}}
+                  on
+                  {{created_at}}
+                </div>
+                <div class="text">
+                  {{comment_text}}
+                </div>
+              </section>
+            {{/each}}
+          </div>
+        </article>
+      </li>
+      <button id="edit-post">Edit</button>
+      <button id="del-post">Delete</button>
+    {{/each}}
+  </ol>
+{{else}}
+  <p>You haven't made any posts yet. Use the form below to submit your first
+    post!</p>
+{{/if}}
+
+<form class="post-form">
+  <div>
+    <label for="post-title">Title:</label>
+    <input type="text" id="post-title" />
+  </div>
+  <div>
+    <textarea name="post-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">Post</button>
+  </div>
+</form>
+
+<script src="/javascript/dashboard.js"></script>
