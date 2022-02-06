@@ -31,12 +31,50 @@ router.get('/', (req, res) => {
                 }
             ]
         })
-        // .then(dbPostData => {
-        //     const posts = dbPostData.map(post => post.get({ plain: true }));
+        .then(dbPostData => {
+            res.json(dbPostData)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+});
 
-    //     res.render('homepage', posts);
-    // })
-    .then(dbPostData => {
+// get post by id
+router.get('/:id', (req, res) => {
+    Post.findOne({
+            where: {
+                id: req.params.id
+            },
+            attributes: [
+                'id',
+                'title',
+                'content',
+                'created_at',
+                'updated_at'
+            ],
+            // show comments for each post and the users who wrote the comments
+            include: [{
+                    model: Comment,
+                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                    include: {
+                        model: User,
+                        attributes: ['username']
+                    }
+                },
+                // include the user who made the post
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]
+        })
+        .then(dbPostData => {
+            // check if post exists at this id
+            if (!dbPostData) {
+                res.status(404).json({ message: 'No post found with this id' });
+                return;
+            }
             res.json(dbPostData)
         })
         .catch(err => {
@@ -80,6 +118,7 @@ router.put('/:id', (req, res) => {
         });
 });
 
+// delete a post that matches the post id
 router.delete('/:id', (req, res) => {
     Post.destroy({
             where: {
