@@ -24,4 +24,44 @@ async function postFormHandler(event) {
     }
 }
 
+async function editPostHandler() {
+    const post_id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
+
+    const response = await fetch('/api/posts/' + post_id, {
+        method: 'put',
+        body: JSON.stringify({
+            title,
+            content
+        }),
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    }
+}
+
+async function deletePostHandler() {
+    const post_id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
+
+    const response = await fetch('/api/posts/' + post_id, {
+        method: 'delete',
+        headers: { 'Content-Type': 'application/json' }
+    });
+
+    if (response.ok) {
+        document.location.replace('/dashboard');
+    } else {
+        alert(response.statusText);
+    }
+}
+
+document.querySelector('#edit-post').addEventListener('click', editPostHandler);
+document.querySelector('#del-post').addEventListener('click', deletePostHandler);
 document.querySelector('.post-form').addEventListener('submit', postFormHandler);

@@ -3,7 +3,7 @@
     {{#each posts as |post|}}
       <li>
         <article>
-          <h4>{{post.title}}</h4>
+          <a href="/post/{{post.id}}"><h4>{{post.title}}</h4></a>
           <p>{{post.content}}</p>
           <div>
             Posted by
@@ -30,8 +30,6 @@
           </div>
         </article>
       </li>
-      <button id="edit-post">Edit</button>
-      <button id="del-post">Delete</button>
     {{/each}}
   </ol>
 {{else}}
