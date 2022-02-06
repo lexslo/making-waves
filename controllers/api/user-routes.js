@@ -72,7 +72,7 @@ router.post('/login', (req, res) => {
     // expects {"username": "my username", "password": "password1"}
     User.findOne({
         where: {
-            email: req.body.username
+            username: req.body.username
         }
     }).then(dbUserData => {
         if (!dbUserData) {
@@ -87,13 +87,13 @@ router.post('/login', (req, res) => {
             return;
         }
 
-        req.session.save(() => {
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
-            req.session.loggedIn = true;
+        // req.session.save(() => {
+        //     req.session.user_id = dbUserData.id;
+        //     req.session.username = dbUserData.username;
+        //     req.session.loggedIn = true;
 
-            res.json({ user: dbUserData, message: 'Login successful' });
-        });
+        res.json({ user: dbUserData, message: 'Login successful' });
+        // });
     });
 });
 
