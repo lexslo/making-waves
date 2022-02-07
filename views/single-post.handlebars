@@ -3,12 +3,6 @@
     <p>Posted by {{post.user.username}} on {{post.created_at}}</p>
     <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
   </div>
-  {{#if loggedIn}}
-    {{!-- {{#if isPostUser}} --}}
-      <button id="edit-post">Edit</button>
-      <button id="del-post">Delete</button>
-    {{!-- {{/if}} --}}
-  {{/if}}
 </article>
 
 {{#if loggedIn}}
@@ -38,5 +32,4 @@
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/dashboard.js"></script>
 {{/if}}

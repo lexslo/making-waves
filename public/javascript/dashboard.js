@@ -1,8 +1,8 @@
 async function postFormHandler(event) {
     event.preventDefault();
 
-    const title = document.querySelector('#post-title').value.trim();
-    const content = document.querySelector('textarea[name="post-body"]').value.trim();
+    const title = document.querySelector('#form-post-title').value.trim();
+    const content = document.querySelector('textarea[name="form-post-body"]').value.trim();
 
     if (content) {
         const response = await fetch('/api/posts', {
@@ -45,9 +45,6 @@ async function savePostHandler(e) {
     const content = document.getElementById('post-content').textContent;
 
     const post_id = e.target.parentNode.id;
-    console.log(post_id);
-    console.log(title);
-    console.log(content);
 
     const response = await fetch('/api/posts/' + post_id, {
         method: 'put',
@@ -69,10 +66,8 @@ async function savePostHandler(e) {
     document.getElementById('edit-post').classList.remove('hide');
 }
 
-async function deletePostHandler() {
-    const post_id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+async function deletePostHandler(e) {
+    const post_id = e.target.parentNode.id;
 
     const response = await fetch('/api/posts/' + post_id, {
         method: 'delete',
