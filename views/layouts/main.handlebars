@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Making Waves</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.7.4/css/foundation-float.min.css" integrity="sha512-LSYG1wfgim4owXFFJrK6pkikbwBr0iF8hCMOo0EFUuF/rut09ry21JGoLx+raCL9oE/no/e18kln42652dy+7Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
@@ -15,12 +16,14 @@
         <a href="/">Making Waves</a>
       </h1>
       <nav>
-        {{#if loggedIn}}
-        <button id="logout">Logout</button>
-        <a href="/dashboard">Dashboard</a>
-        {{else}}
-        <a href="/login">Login</a>
-        {{/if}}
+        <ul class="menu align-right">
+          {{#if loggedIn}}
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><button id="logout" type="button" class="button">Logout</button></li>
+          {{else}}
+          <li><a href="/login">Login</a></li>
+          {{/if}}
+        </ul>
       </nav>
     </header>
     <main>
@@ -33,6 +36,7 @@
   {{#if loggedIn}}
   <script src="/javascript/logout.js"></script>
   {{/if}}
+
 </body>
 
 </html>

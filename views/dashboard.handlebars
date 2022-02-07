@@ -1,4 +1,4 @@
-<button id="new-post">Create New Post</button>
+<button id="new-post" type="button" class="button">Create New Post</button>
 
 <form class="post-form hide">
   <div>
@@ -10,18 +10,23 @@
   </div>
 
   <div>
-    <button type="submit">Post</button>
+    <button type="submit" class="submit button">Post</button>
   </div>
 </form>
 
 {{#if posts}}
-  <ol>
-    {{#each posts as |post|}}
-      <li>
-        <article id="{{post.id}}">
-          <h4 id="post-title">{{post.title}}<a href="/post/{{post.id}}"> >></a></h4>
+  {{#each posts as |post|}}
+    <div class="card">
+      <article id="{{post.id}}">
+
+        <div class="card-divider">
+          <h4 id="post-title">{{post.title}}<a href="/post/{{post.id}}">
+              >></a></h4>
+        </div>
+        <div class="card-section">
           <p id="post-content">{{post.content}}</p>
-          <div>
+
+          <div class="posted-by">
             Posted by
             {{post.user.username}}
             on
@@ -29,13 +34,15 @@
             |
             <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
           </div>
+        </div>
 
-            {{!-- {{#if isPostUser}} --}}
-            <button id="edit-post">Edit</button>
-            <button id="save-post" class="hide">Save</button>
-            <button id="del-post">Delete</button>
-            {{!-- {{/if}} --}}
+        <div class="card-section">
+          <button id="edit-post" type="button" class="button">Edit</button>
+          <button id="save-post" type="button" class="button hide">Save</button>
+          <button id="del-post" type="button" class="button">Delete</button>
+        </div>
 
+        <div class="card-section">
           <div class="comments">
             {{#each post.comments}}
               <section class="comment">
@@ -50,10 +57,11 @@
               </section>
             {{/each}}
           </div>
-        </article>
-      </li>
-    {{/each}}
-  </ol>
+        </div>
+
+      </article>
+    </div>
+  {{/each}}
 {{else}}
   <p>You haven't made any posts yet. Use the form below to submit your first
     post!</p>
