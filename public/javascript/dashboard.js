@@ -22,6 +22,9 @@ async function postFormHandler(event) {
             alert(response.statusText);
         }
     }
+
+    document.querySelector('.post-form').classList.add('hide');
+    document.querySelector('#new-post').classList.remove('hide');
 }
 
 async function editPostHandler(e) {
@@ -81,7 +84,13 @@ async function deletePostHandler(e) {
     }
 }
 
+async function newPostHandler() {
+    document.querySelector('.post-form').classList.remove('hide');
+    document.querySelector('#new-post').classList.add('hide');
+}
+
 document.querySelector('#edit-post').addEventListener('click', editPostHandler);
 document.querySelector('#del-post').addEventListener('click', deletePostHandler);
-document.querySelector('#save-post').addEventListener('click', savePostHandler)
+document.querySelector('#save-post').addEventListener('click', savePostHandler);
+document.querySelector('#new-post').addEventListener('click', newPostHandler);
 document.querySelector('.post-form').addEventListener('submit', postFormHandler);

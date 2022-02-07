@@ -1,3 +1,19 @@
+<button id="new-post">Create New Post</button>
+
+<form class="post-form hide">
+  <div>
+    <label for="form-post-title">Title:</label>
+    <input type="text" id="form-post-title" />
+  </div>
+  <div>
+    <textarea name="form-post-body"></textarea>
+  </div>
+
+  <div>
+    <button type="submit">Post</button>
+  </div>
+</form>
+
 {{#if posts}}
   <ol>
     {{#each posts as |post|}}
@@ -42,21 +58,5 @@
   <p>You haven't made any posts yet. Use the form below to submit your first
     post!</p>
 {{/if}}
-
-<button id="new-post">Create New Post</button>
-
-<form class="post-form hide">
-  <div>
-    <label for="form-post-title">Title:</label>
-    <input type="text" id="form-post-title" />
-  </div>
-  <div>
-    <textarea name="form-post-body"></textarea>
-  </div>
-
-  <div>
-    <button type="submit">Post</button>
-  </div>
-</form>
 
 <script src="/javascript/dashboard.js"></script>
