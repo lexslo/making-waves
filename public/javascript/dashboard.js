@@ -29,25 +29,33 @@ async function postFormHandler(event) {
 
 async function editPostHandler(e) {
 
+    const parentEl = e.target.parentNode.parentNode;
+    const secondChildEl = parentEl.querySelector('.card-divider');
+    const thirdChildEl = parentEl.querySelector('.card-section');
+
+    const btnsParent = e.target.parentNode.id;
+    const btnsContainer = document.getElementById(btnsParent);
+
     // show save button and hide edit button
-    document.getElementById('save-post').classList.remove('hide');
-    document.getElementById('edit-post').classList.add('hide');
+    btnsContainer.querySelector('#save-post').classList.remove('hide');
+    btnsContainer.querySelector('#edit-post').classList.add('hide');
 
     // target the post title and the post content
-    const prevPostContent = document.getElementById('post-content');
-    const prevPostTitle = document.getElementById('post-title');
+    const prevPostTitle = secondChildEl.querySelector('#post-title');
+    const prevPostContent = thirdChildEl.querySelector('#post-content');
 
-    prevPostContent.setAttribute('contenteditable', true);
     prevPostTitle.setAttribute('contenteditable', true);
+    prevPostContent.setAttribute('contenteditable', true);
 
 }
 
 async function savePostHandler(e) {
 
-    const title = document.getElementById('post-title').textContent;
-    const content = document.getElementById('post-content').textContent;
+    const post_id = e.target.parentNode.parentNode.id;
+    const clickedPost = document.getElementById(post_id);
 
-    const post_id = e.target.parentNode.id;
+    const title = clickedPost.getElementById('post-title').textContent;
+    const content = clickedPost.getElementById('post-content').textContent;
 
     const response = await fetch('/api/posts/' + post_id, {
         method: 'put',
@@ -70,7 +78,7 @@ async function savePostHandler(e) {
 }
 
 async function deletePostHandler(e) {
-    const post_id = e.target.parentNode.id;
+    const post_id = e.target.parentNode.parentNode.id;
 
     const response = await fetch('/api/posts/' + post_id, {
         method: 'delete',
