@@ -20,23 +20,32 @@
       <article id="{{post.id}}">
 
         <div class="card-divider">
-          <h4 id="post-title">{{post.title}}<a href="/post/{{post.id}}">
-              >></a></h4>
+          <h4 id="post-title">{{post.title}}</h4>
         </div>
-        <div class="card-section">
+        <div class="card-section post-content">
+
           <p id="post-content">{{post.content}}</p>
 
-          <div class="posted-by">
-            Posted by
-            {{post.user.username}}
-            on
-            {{post.created_at}}
-            |
-            <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
+        <div class="card-section">
+            <div class="posted-by">
+              Posted by
+              {{post.user.username}}
+              on
+              {{post.created_at}}
+              |
+              <a href="/post/{{post.id}}">{{post.comments.length}}
+                comment(s)</a>
+            </div>
+            {{#if post.updated_at}}
+              <div class="updated-at">
+                Updated at
+                {{post.updated_at}}
+              </div>
+            {{/if}}
           </div>
         </div>
 
-        <div class="card-section" id="post-id-{{post.id}}">
+        <div class="card-section" id="postEditBtns-{{post.id}}">
           <button id="edit-post" type="button" class="button">Edit</button>
           <button id="save-post" type="button" class="button hide">Save</button>
           <button id="del-post" type="button" class="button">Delete</button>
@@ -63,8 +72,8 @@
     </div>
   {{/each}}
 {{else}}
-  <p>You haven't made any posts yet. Use the form below to submit your first
-    post!</p>
+  <p>You haven't made any posts yet. Click "Create New Post" to start making
+    waves!</p>
 {{/if}}
 
 <script src="/javascript/dashboard.js"></script>

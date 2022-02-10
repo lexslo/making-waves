@@ -1,7 +1,28 @@
+main {
+    margin: 20px;
+}
+
 header {
     background-color: lightgray;
 }
 
 .hide {
     display: none;
+}
+
+.button {
+    border-radius: 15px;
+}
+
+.card {
+    border-radius: 10px;
+    max-width: 1000px;
+}
+
+.card-section {
+    padding: 5px;
+}
+
+.post-content {
+    border-bottom: 1px solid black;
 }

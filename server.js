@@ -20,12 +20,6 @@ const sess = {
     })
 };
 
-// Handlebars.registerHelper("isPostUser", function(sessionUser, postUser) {
-//     if (req.session.user_id === post.user_id) {
-//         return true;
-//     }
-// });
-
 app.use(session(sess));
 
 const hbs = exphbs.create({});
