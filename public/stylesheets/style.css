@@ -1,5 +1,5 @@
 body {
-    background-color: url("../images/japanese-wave-pattern.png");
+    background-image: url("../images/waves-bg.png");
     background-size: cover;
     background-position: inherit;
     background-attachment: fixed;
