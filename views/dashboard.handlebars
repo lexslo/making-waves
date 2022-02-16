@@ -25,11 +25,12 @@
         <div class="card-section post-content">
 
           <p id="post-content">{{post.content}}</p>
+        </div>
 
-        <div class="card-section">
+        <div class="card-section post-info">
             <div class="posted-by">
               Posted by
-              {{post.user.username}}
+              <b>{{post.user.username}}</b>
               on
               {{post.created_at}}
               |
@@ -43,12 +44,13 @@
               </div>
             {{/if}}
           </div>
-        </div>
 
-        <div class="card-section" id="postEditBtns-{{post.id}}">
-          <button id="edit-post" type="button" class="button">Edit</button>
-          <button id="save-post" type="button" class="button hide">Save</button>
-          <button id="del-post" type="button" class="button">Delete</button>
+          <div class="card-section" id="postEditBtns-{{post.id}}">
+            <button id="edit-post" type="button" class="button primary">Edit</button>
+            <button id="save-post" type="button" class="button primary hide">Save</button>
+            <button id="del-post" type="button" class="button primary">Delete</button>
+          </div>
+
         </div>
 
         <div class="card-section">
@@ -56,7 +58,7 @@
             {{#each post.comments}}
               <section class="comment">
                 <div class="meta">
-                  {{user.username}}
+                  <b>{{user.username}}</b>
                   on
                   {{created_at}}
                 </div>

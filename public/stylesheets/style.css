@@ -1,9 +1,17 @@
+body {
+    background-color: url("../images/japanese-wave-pattern.png");
+    background-size: cover;
+    background-position: inherit;
+    background-attachment: fixed;
+}
+
 main {
     margin: 20px;
 }
 
 header {
     background-color: lightgray;
+    padding-bottom: 5px;
 }
 
 .hide {
@@ -12,11 +20,14 @@ header {
 
 .button {
     border-radius: 15px;
+    margin: 3px;
 }
 
 .card {
     border-radius: 10px;
     max-width: 1000px;
+    margin: 15px auto;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .card-section {
@@ -25,4 +36,11 @@ header {
 
 .post-content {
     border-bottom: 1px solid black;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.post-info {
+    font-size: 15px;
+    font-style: italic;
 }
