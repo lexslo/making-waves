@@ -1,3 +1,11 @@
+:root {
+    --lt-gray: #c1d1dc;
+    --gray: #83878e;
+    --dark-gray: #525c65;
+    --lt-blue: #5a8da9;
+    --blue: #226095;
+}
+
 body {
     background-image: url("../images/waves-bg.png");
     background-size: cover;
@@ -10,8 +18,12 @@ main {
 }
 
 header {
-    background-color: lightgray;
+    background-color: rgba(193, 209, 220, 0.8);
     padding-bottom: 5px;
+}
+
+header a {
+    color: var(--lt-blue);
 }
 
 .hide {
@@ -21,6 +33,7 @@ header {
 .button {
     border-radius: 15px;
     margin: 3px;
+    background-color: var(--blue);
 }
 
 .card {
@@ -28,6 +41,11 @@ header {
     max-width: 1000px;
     margin: 15px auto;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.card-divider {
+    color: var(--lt-gray);
+    background-color: var(--dark-gray);
 }
 
 .card-section {
