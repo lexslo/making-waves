@@ -1,18 +1,36 @@
-<button id="new-post" type="button" class="button">Create New Post</button>
+<div class="card new-post">
+  <div class="card-divider">
+    <h2>Ready to join the tide?</h2>
+  </div>
+  <div class="card-section">
+    <p>Guidelines for Making Waves:</p>
+    <ol>
+      <li>Be respectful of others, both in posts and the comments</li>
+      <li>Keep the content relevant and current</li>
+      <li>Ride the tide and keep making waves in the music tech community!</li>
+    </ol>
+    <div class="card-section">
+      <button id="new-post" type="button" class="button">Make Some Waves</button>
+    </div>
+  </div>
+</div>
 
-<form class="post-form hide">
-  <div>
-    <label for="form-post-title">Title:</label>
-    <input type="text" id="form-post-title" />
-  </div>
-  <div>
-    <textarea name="form-post-body"></textarea>
-  </div>
+<div class="hide post-form card form-card">
+  <form>
+    <div>
+      <label for="form-post-title">Title:</label>
+      <input type="text" id="form-post-title" />
+    </div>
+    <div>
+      <textarea name="form-post-body"></textarea>
+    </div>
 
-  <div>
-    <button type="submit" class="submit button">Post</button>
-  </div>
-</form>
+    <div class="form-bottom">
+      <button type="submit" class="submit button">Post</button>
+    </div>
+  </form>
+</div>
+
 
 {{#if posts}}
   {{#each posts as |post|}}
@@ -74,8 +92,13 @@
     </div>
   {{/each}}
 {{else}}
-  <p>You haven't made any posts yet. Click "Create New Post" to start making
-    waves!</p>
+<div class="card no-posts">
+  <p>
+    You haven't made any posts yet. 
+    </br>
+    Click <b>Make Some Waves</b> to start making waves!
+  </p>
+</div>
 {{/if}}
 
 <script src="/javascript/dashboard.js"></script>

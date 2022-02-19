@@ -49,7 +49,9 @@ async function editPostHandler(e) {
 
     // allow user to edit the elements
     prevPostTitle.setAttribute('contenteditable', true);
+    prevPostTitle.classList.add('edit-border');
     prevPostContent.setAttribute('contenteditable', true);
+    prevPostContent.classList.add('edit-border');
 
 }
 
@@ -85,6 +87,9 @@ async function savePostHandler(e) {
     // show save button and hide edit button
     btnsContainer.querySelector('#save-post').classList.add('hide');
     btnsContainer.querySelector('#edit-post').classList.remove('hide');
+
+    title.classList.remove('edit-border');
+    content.classList.remove('edit-border');
 }
 
 async function deletePostHandler(e) {

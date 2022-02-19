@@ -17,9 +17,14 @@ main {
     margin: 20px;
 }
 
-header {
-    background-color: rgba(193, 209, 220, 0.8);
+.top-bar,
+.top-bar ul {
+    background-color: rgba(193, 209, 220, 0.85);
     padding-bottom: 5px;
+}
+
+header h1 {
+    align-self: flex-end;
 }
 
 header a {
@@ -40,7 +45,8 @@ header a {
     border-radius: 10px;
     max-width: 1000px;
     margin: 15px auto;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 7px 7px 7px 1px rgba(0, 0, 0, 0.2);
 }
 
 .card-divider {
@@ -52,6 +58,39 @@ header a {
     padding: 5px;
 }
 
+.form-card {
+    max-width: 600px;
+}
+
+.new-post,
+.no-posts {
+    max-width: 500px;
+    text-align: center;
+}
+
+.form-comment {
+    max-width: 500px;
+    margin: 15px 0 0 0;
+}
+
+.comment {
+    max-width: 500px;
+    margin: 15px 0 0 0;
+    padding: 10px;
+}
+
+.comment-text {
+    border-top: 1px solid black;
+}
+
+form {
+    margin: 15px;
+}
+
+.form-bottom {
+    padding-bottom: 15px;
+}
+
 .post-content {
     border-bottom: 1px solid black;
     font-size: 20px;
@@ -61,4 +100,8 @@ header a {
 .post-info {
     font-size: 15px;
     font-style: italic;
+}
+
+.edit-border {
+    border: 2px solid var(--lt-blue);
 }
