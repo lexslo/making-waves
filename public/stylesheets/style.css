@@ -13,6 +13,10 @@ body {
     background-attachment: fixed;
 }
 
+h1 {
+    font-family: 'Leckerli One', cursive;
+}
+
 main {
     margin: 20px;
 }
