@@ -9,11 +9,16 @@ const PORT = process.env.PORT || 3001;
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// session declaration, include cookies
+// session declaration, include cookies - session expires after 5 minutes of inactivity
 const sess = {
     secret: 'Circle of 5ths is 14736251',
-    cookie: {},
-    resave: false,
+    path: '/',
+    cookie: {
+        expires: 60000,
+        maxAge: 30 * 10000
+    },
+    resave: true,
+    rolling: true,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize
