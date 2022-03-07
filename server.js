@@ -11,7 +11,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // session declaration, include cookies - session expires after 5 minutes of inactivity
 const sess = {
-    secret: 'Circle of 5ths is 14736251',
+    secret: process.env.SECRET,
     path: '/',
     cookie: {
         expires: 60000,
