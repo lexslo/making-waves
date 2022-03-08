@@ -1,5 +1,3 @@
-const dateFormat = require('../javascript/date-format');
-
 async function commentFormHandler(event) {
     event.preventDefault();
 
