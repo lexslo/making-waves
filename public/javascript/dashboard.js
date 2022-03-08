@@ -112,6 +112,11 @@ async function newPostHandler() {
     document.querySelector('#new-post').classList.add('hide');
 }
 
+async function cancelPostHandler() {
+    document.querySelector('.post-form').classList.add('hide');
+    document.querySelector('#new-post').classList.remove('hide');
+}
+
 // target edit, save, delete buttons on each  post and trigger associated functions
 document.addEventListener("click", function(event) {
 
@@ -132,4 +137,5 @@ document.addEventListener("click", function(event) {
 });
 
 document.querySelector('#new-post').addEventListener('click', newPostHandler);
+document.querySelector('#cancel-post').addEventListener('click', cancelPostHandler);
 document.querySelector('.post-form').addEventListener('submit', postFormHandler);
