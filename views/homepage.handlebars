@@ -12,7 +12,9 @@
           Posted by
           <b>{{post.user.username}}</b>
           on
-          {{post.created_at}}
+          {{formatDate post.created_at}}
+          at
+          {{formatTime post.created_at}}
           |
           <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
         </div>
@@ -20,7 +22,9 @@
         {{#if post.updated_at}}
           <div class="updated-at">
             Updated at
-            {{post.updated_at}}
+            {{formatTime post.updated_at}}
+            on
+            {{formatDate post.updated_at}}
           </div>
         {{/if}}
       </div>
