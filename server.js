@@ -11,14 +11,11 @@ const PORT = process.env.PORT || 3001;
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// session declaration, include cookies - session expires after 5 minutes of inactivity
+// session declaration, include cookies - session expires after 1 hr of inactivity
 const sess = {
     secret: process.env.SECRET,
     path: '/',
-    cookie: {
-        expires: 60000,
-        maxAge: 30 * 10000
-    },
+    cookie: { maxAge: 60 * 60 * 1000 },
     resave: true,
     rolling: true,
     saveUninitialized: true,
